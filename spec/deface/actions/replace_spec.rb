@@ -31,7 +31,7 @@ module Deface
         let(:source) { "<h1>start</h1><p>some junk</p><div>more junk</div><h2>end</h2>" }
 
         it "should log error and return unmodified source" do
-          Rails.logger.should_receive(:info).with(/failed to match with end selector/)
+          Environment.logger.should_receive(:info).with(/failed to match with end selector/)
           Dummy.apply(source, {:virtual_path => "posts/index"}).should == source
           @override.failure.should be_true
         end
@@ -42,7 +42,7 @@ module Deface
         let(:source) { "<h1>start</h1><p>some junk</p><div>more junk</div><h2>end</h2>" }
 
         it "should log error and return unmodified source" do
-          Rails.logger.should_receive(:info).with(/failed to match with starting selector/)
+          Environment.logger.should_receive(:info).with(/failed to match with starting selector/)
           Dummy.apply(source, {:virtual_path => "posts/index"}).should == source
           @override.failure.should be_true
         end

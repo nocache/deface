@@ -51,7 +51,7 @@ module Deface
       end
 
       it "should warn but not validate" do
-        Rails.logger.should_receive(:info).once
+        Environment.logger.should_receive(:info).once
         @override.validate_original("<p>this gets ignored</p>").should be_nil
       end
 

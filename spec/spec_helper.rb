@@ -59,11 +59,11 @@ shared_context "mock Rails" do
 
     Rails.stub :root => Pathname.new('spec/dummy')
 
-    Rails.stub :logger => mock('logger')
-    Rails.logger.stub(:error)
-    Rails.logger.stub(:warning)
-    Rails.logger.stub(:info)
-    Rails.logger.stub(:debug)
+    Environment.stub :logger => mock('logger')
+    Environment.logger.stub(:error)
+    Environment.logger.stub(:warning)
+    Environment.logger.stub(:info)
+    Environment.logger.stub(:debug)
 
     Time.stub :zone => mock('zone')
     Time.zone.stub(:now).and_return Time.parse('1979-05-25')

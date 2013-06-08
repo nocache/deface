@@ -12,15 +12,15 @@ module Deface
 
         if starting && ending
           if log
-            Rails.logger.info("\e[1;32mDeface:\e[0m '#{@name}' matched starting with '#{@selector}' and ending with '#{@end_selector}'")
+            Environment.logger.info("\e[1;32mDeface:\e[0m '#{@name}' matched starting with '#{@selector}' and ending with '#{@end_selector}'")
           end
 
           return [select_range(starting, ending)]
         else
           if starting.nil?
-            Rails.logger.info("\e[1;32mDeface:\e[0m '#{@name}' failed to match with starting selector '#{@selector}'")
+            Environment.logger.info("\e[1;32mDeface:\e[0m '#{@name}' failed to match with starting selector '#{@selector}'")
           else
-            Rails.logger.info("\e[1;32mDeface:\e[0m '#{@name}' failed to match with end selector '#{@end_selector}'")
+            Environment.logger.info("\e[1;32mDeface:\e[0m '#{@name}' failed to match with end selector '#{@end_selector}'")
           end
           return []
         end

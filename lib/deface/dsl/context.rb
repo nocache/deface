@@ -22,7 +22,7 @@ module Deface
       def self.define_action_method(action_name)
         define_method(action_name) do |selector|
           if @action.present?
-            Rails.logger.error "\e[1;32mDeface: [WARNING]\e[0m Multiple action methods have been called. The last one will be used."
+            Environment.logger.error "\e[1;32mDeface: [WARNING]\e[0m Multiple action methods have been called. The last one will be used."
           end
 
           @action = { action_name => selector }
@@ -32,7 +32,7 @@ module Deface
       def self.define_source_method(source_name)
         define_method(source_name) do |value|
           if @source.present?
-            Rails.logger.error "\e[1;32mDeface: [WARNING]\e[0m Multiple source methods have been called. The last one will be used."
+            Environment.logger.error "\e[1;32mDeface: [WARNING]\e[0m Multiple source methods have been called. The last one will be used."
           end
 
           @source = { source_name => value }

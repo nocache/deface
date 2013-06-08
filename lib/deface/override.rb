@@ -114,7 +114,7 @@ module Deface
       end
     rescue SystemStackError
       if defined?(Rails)
-        Rails.logger.error "\e[1;32mDeface: [WARNING]\e[0m Circular sequence dependency includes override named: '#{self.name}' on '#{@args[:virtual_path]}'."
+        Environment.logger.error "\e[1;32mDeface: [WARNING]\e[0m Circular sequence dependency includes override named: '#{self.name}' on '#{@args[:virtual_path]}'."
       end
 
       return 100

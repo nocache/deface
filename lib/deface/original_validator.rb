@@ -18,13 +18,13 @@ module Deface
           valid = self.original_source.to_s.gsub(/\s/, '') == match.to_s.gsub(/\s/, '')
         end
 
-        if !valid && defined?(Rails.logger)
-          Rails.logger.error "\e[1;32mDeface: [ERROR]\e[0m The original source for '#{self.name}' has changed, this override should be reviewed to ensure it's still valid."
+        if !valid && defined?(Environment.logger)
+          Environment.logger.error "\e[1;32mDeface: [ERROR]\e[0m The original source for '#{self.name}' has changed, this override should be reviewed to ensure it's still valid."
         end
 
         return valid
       else
-        Rails.logger.info "\e[1;32mDeface: [WARNING]\e[0m No :original defined for '#{self.name}', you should change its definition to include:\n :original => '#{hashed_original}' "
+        Environment.logger.info "\e[1;32mDeface: [WARNING]\e[0m No :original defined for '#{self.name}', you should change its definition to include:\n :original => '#{hashed_original}' "
 
         return nil
       end

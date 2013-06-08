@@ -6,6 +6,7 @@ module Deface
   DEFAULT_SOURCES = [ Sources::Text, Sources::Erb, Sources::Haml, Sources::Slim, Sources::Partial, Sources::Template, Sources::Cut, Sources::Copy]
 
   class Environment
+    cattr_accessor :logger, :instance_writer => false
     attr_accessor :overrides, :enabled, :haml_support, :namespaced, :slim_support
     def initialize
       @overrides    = Overrides.new
@@ -18,6 +19,7 @@ module Deface
 
       Deface::DEFAULT_ACTIONS.each { |action| register_action(action) }
       Deface::DEFAULT_SOURCES.each { |source| register_source(source) }
+      @@logger = Rails.logger.clone if defined?(Rails.logger)
     end
 
     def register_action(action)
